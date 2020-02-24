@@ -1,4 +1,5 @@
 import React from "react";
+import { Card, CardText, CardTitle, CardImg, CardBody } from "reactstrap";
 
 export default function CharacterCard({ charData }) {
   /* id name, species, gender, image
@@ -7,14 +8,9 @@ export default function CharacterCard({ charData }) {
   const { id, name, species, gender, image } = charData;
 
   return (
-    <div className="CharacterCard">
-      <header>
-        <h3>{name}</h3>
-      </header>
-
-      <div>
-        <img src={image} />
-      </div>
-    </div>
+    <Card>
+      <CardImg src={image} alt={`image of ${name}`} />
+      <CardTitle>{name}</CardTitle>
+    </Card>
   );
 }
