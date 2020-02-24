@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import CharacterCard from "./CharacterCard";
 
 export default function CharacterList() {
   //   - Fetch a list of characters from the Rick and Morty API's Characters endpoint *`https://rickandmortyapi.com/api/character/`* and render them to the screen.
@@ -24,9 +25,9 @@ export default function CharacterList() {
     fetchCharacters().catch(err => console.log(err));
   }, []);
 
-  return (
-    <section className="character-list">
-      <h2>TODO: `array.map()` over your state here!</h2>
-    </section>
-  );
+  const charElements = characters.map(char => {
+    return <CharacterCard key={char.id} charData={char} />;
+  });
+
+  return <section className="character-list">{charElements}</section>;
 }
