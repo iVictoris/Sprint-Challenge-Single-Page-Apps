@@ -5,13 +5,15 @@ import WelcomePage from "./components/WelcomePage";
 
 import { Switch, Route, NavLink, Redirect } from "react-router-dom";
 
+import { Navbar } from "reactstrap";
+
 export default function App() {
   return (
     <>
-      <nav>
+      <Navbar color="dark">
         <NavLink to="/">Home</NavLink>
         <NavLink to="characters/">Characters</NavLink>
-      </nav>
+      </Navbar>
       <main>
         <Switch>
           <Route path="/characters/" component={CharacterList} />
