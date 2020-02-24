@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
+import SearchForm from "./SearchForm";
 
 export default function CharacterList() {
   //   - Fetch a list of characters from the Rick and Morty API's Characters endpoint *`https://rickandmortyapi.com/api/character/`* and render them to the screen.
@@ -9,6 +10,13 @@ export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
 
   const [characters, setCharacters] = useState([]);
+  const [nameFilter, setNameFilter] = useState("");
+  const [isFiltering, setIsFiltering] = useState(false);
+  const [filteredCharacters, setFilteredCharacters] = useState([]);
+  const handleNameFilterChange = ({ target: { value } }) => {
+    setNameFilter(value);
+    nameFilter.length > 0 ? setIsFiltering(true) : setIsFiltering(false);
+  };
 
   useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
@@ -25,9 +33,25 @@ export default function CharacterList() {
     fetchCharacters().catch(err => console.log(err));
   }, []);
 
-  const charElements = characters.map(char => {
-    return <CharacterCard key={char.id} charData={char} />;
-  });
+  useEffect(() => {
+    const charactersFiltered = characters.filter(char =>
+      char.name.toLowerCase().includes(nameFilter.toLowerCase())
+    );
+    setFilteredCharacters(charactersFiltered);
+  }, [nameFilter]);
 
-  return <section className="character-list">{charElements}</section>;
+  const createElements = arrData => {
+    return arrData.map(char => {
+      return <CharacterCard key={char.id} charData={char} />;
+    });
+  };
+
+  return (
+    <section className="character-list">
+      <SearchForm handleChange={handleNameFilterChange} />
+      {isFiltering
+        ? createElements(filteredCharacters)
+        : createElements(characters)}
+    </section>
+  );
 }
