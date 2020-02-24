@@ -8,9 +8,13 @@ export default function CharacterCard({ charData }) {
   const { id, name, species, gender, image } = charData;
 
   return (
-    <Card>
+    <Card className="Card">
       <CardImg src={image} alt={`image of ${name}`} />
-      <CardTitle>{name}</CardTitle>
+      <CardTitle
+        className={`Card-Title${name.split(" ").length > 2 ? "-sm" : ""}`}
+      >
+        {name}
+      </CardTitle>
     </Card>
   );
 }

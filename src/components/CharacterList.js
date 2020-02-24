@@ -47,7 +47,7 @@ export default function CharacterList() {
   };
 
   return (
-    <section className="character-list">
+    <section className="CharacterList">
       <SearchForm handleChange={handleNameFilterChange} />
       {isFiltering
         ? createElements(filteredCharacters)

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function SearchForm({ handleChange }) {
   // filter by name
   return (
-    <section className="search-form">
+    <section className="SearchForm">
       <form>
         <input
           type="text"
