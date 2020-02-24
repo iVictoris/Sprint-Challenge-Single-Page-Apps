@@ -23,7 +23,6 @@ export default function CharacterList() {
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
     fetchCharacters().catch(err => console.log(err));
   }, []);
-  console.log(characters);
 
   return (
     <section className="character-list">
