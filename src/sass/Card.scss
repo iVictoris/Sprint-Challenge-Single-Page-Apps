@@ -1,0 +1,40 @@
+.Card {
+  width: 45%;
+  margin: 10px 0;
+  box-shadow: 1px 1px 5px black;
+
+  &-Title,
+  &-Title-sm {
+    margin: 0 auto;
+    font-weight: bolder;
+  }
+
+  &-Title {
+    font-size: 0.85rem;
+  }
+
+  &-Title-sm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.5rem;
+  }
+
+  @media (min-width: 800px) {
+    width: 30%;
+    margin: 15px 0;
+
+    &-Title,
+    &-Title-sm {
+      font-weight: bolder;
+    }
+
+    &-Title {
+      font-size: 1.25rem;
+    }
+
+    &-Title-sm {
+      font-size: 1rem;
+    }
+  }
+}
